@@ -1,0 +1,73 @@
+set enc=utf8
+set termencoding=utf-8
+set fileencoding=utf-8
+set number
+
+" tab character settings
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+set t_Co=256
+set cursorline
+set noswapfile
+set nobackup
+set completeopt-=preview
+set clipboard+=unnamed
+
+set showtabline=2
+
+" search
+set wrapscan
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set backspace=indent,eol,start
+
+" Shift-Tab to decrease indent
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible  " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/Users/knsh14/.config/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.vim/dein')
+  call dein#begin('~/.vim/dein')
+  call dein#load_toml('~/.config/dein/dein.toml', {'lazy': 0})
+  call dein#load_toml('~/.config/dein/dein_lazy.toml', {'lazy': 1})
+
+  " Required:
+  call dein#end()
+  call dein#call_hook('source')
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+lua << EOF
+local mod = require('knsh14')
+EOF
+
